@@ -1,0 +1,2 @@
+In HTML, the @ sign is encoded
+as &#64;, &#x40, or #commat;.

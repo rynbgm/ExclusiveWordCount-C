@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include "bst.h"
+#include "holdall.h"
+
+/////////////facilite la vie/////////////////////
+
+#define MAX_LENGTH_OPTIONS 3
+#define INDICE_DEBUT_FICHERS (1 + nbr_options)
+#define INDICE_FIN_FICHERS (argc - 1)
+#define HELP "-?"
+#define USAGE argv[0]
+//fprintf(stdout,"%s"  " [OPTION] ... [FILE]...\n",USAGE);
+#define VERSION ("This is freeware: you can redistribute it."                  \
+  "There is NO WARRANTY\n")
+//fprintf(stdout,VERSION);
+#define BINARY_TREE "-a"
+//#define HASH_TABLE "-h"
+//#define w ?
+//#define WORD_MAX_LENGTH "-i"
+//#define PUNCTUATION "-p"
+//#define RESTRICT "-r"
+//#define LEX_SORT "-l"
+//#define NUM_SORT "-n"
+//#define NON_SORT "-S"
+//#define un truc - pour l'entre standard
+#define OTHER(opt) ("xwc :  Unrecognized option '"opt"'."                      \
+                    "Try 'xwc --help' for more information.")                  \
+
+#define STR(s)  #s
+#define XSTR(s) STR(s)
+#define WORD_LENGTH_MAX 31
+#define BORNE 5
+
+
+///////////////////////////////////////////////////////
+
+/////////////////////////// les methode comme on dit ////////////
+
+//bool est_option(const char *arg) {
+  //return arg[0] == '-' && strlen(arg) > 1
+    //&& strlen(arg) <= MAX_LENGTH_OPTIONS;
+//}
+
+bool est_option(const char *arg){
+  return strcmp(arg,BINARY_TREE) == 0;
+
+}
+///////////////////////////////////////////////////////////////
+
+
+
+int main(int argc, char *argv[]) {
+  int r = EXIT_SUCCESS;
+  int nbr_options = 0;
+  int nbr_fichers = 0;
+  //lire les argumetns et les compter
+  int i = 1;
+  bool res = est_option(argv[1]);
+  fprintf(stdout,"!!!%d!!!",res);
+  while (i < argc) {
+    if (est_option(argv[i])) {
+      //donc c'est une option
+      nbr_options++;
+    }
+    i++;
+  }
+  nbr_fichers =  argc - 1 - nbr_options;
+  /////////////////////////////////
+  //si ya pas de ficher en argumetns on doit lire avecle truc <
+  char w[WORD_LENGTH_MAX + 1];
+  if (nbr_fichers == 0 ){
+    fprintf(stdout,"on va lire avec les insertions ici \n");
+    while (scanf("%" XSTR(WORD_LENGTH_MAX) "s", w) == 1) {
+
+    }
+  }
+  //donc la ya des argumetns
+  //faut lire les ficher un par un depuis le tab des arguments
+  //qui commence dans agrv de INDICE_DEBUT_FICHERS a INDICE_FIN_FICHERS
+
+
+  //goto dispose;
+  //tt est bien fini
+//error_capacity:
+  //fprintf(stderr, "*** Error: Not enough memory\n");
+  //goto error;
+//error_read:
+  //fprintf(stderr, "*** Error: A read error occurs\n");
+  //goto error;
+//error_write:
+  //fprintf(stderr, "*** Error: A write error occurs\n");
+  //goto error;
+//error:
+  //r = EXIT_FAILURE;
+  //goto dispose;
+//dispose:
+  //faire un dispose un jour
+  return r;
+}
+

@@ -1,0 +1,66 @@
+Usage: xwc [OPTION]... [FILE]...
+
+Exclusive word counting. Print the number of occurrences of each word that appears in one and
+only one of given text FILES.
+
+A word is, by default, a maximum length sequence of characters that do not belong to the
+white-space characters set.
+
+Results are displayed in columns on the standard output. Columns are separated by the tab
+character. Lines are terminated by the end-of-line character. A header line shows the FILE
+names: the name of the first FILE appears in the second column, that of the second in the
+third, and so on. For the following lines, a word appears in the first column, its number of
+occurrences in the FILE in which it appears to the exclusion of all others in the column
+associated with the FILE. No tab characters are written on a line after the number of
+occurrences.
+
+Read the standard input when no FILE is given or for any FILE which is "-". In such cases, ""
+is displayed in the column associated with the FILE on the header line.
+
+The locale specified by the environment affects sort order. Set 'LC_ALL=C' to get the
+traditional sort order that uses native byte values.
+
+Mandatory arguments to long options are mandatory for short options too.
+
+Program Information
+  -?, --help    Print this help message and exit.
+
+      --usage   Print a short usage message and exit.
+
+      --version    Print version information.
+
+Processing
+  -a            Same as --words-processing=avl-binary-tree.
+
+  -h            Same as --words-processing=hash-table.
+
+  -w, --words-processing=TYPE    Process the words according to the data structure specified by
+                TYPE. The available values for TYPE are self explanatory: 'avl-binary-tree' and
+                'hash-table'. Default is 'hash-table'.
+
+Input Control
+  -i, --initial=VALUE    Set the maximal number of significant initial letters for words to
+                VALUE. 0 means without limitation. Default is 0.
+
+  -p, --punctuation-like-space    Make the punctuation characters play the same role as
+                white-space characters in the meaning of words.
+
+  -r, --restrict=FILE    Limit the counting to the set of words that appear in FILE. FILE is
+                displayed in the first column of the header line. If FILE is "-", read words
+                from the standard input; in this case, "" is displayed in first column of the
+                header line.
+
+Output Control
+  -l            Same as --sort=lexicographical.
+
+  -n            Same as --sort=numeric.
+
+  -S            Same as --sort=none.
+
+  -s, --sort=TYPE    Sort the results in ascending order, by default, according to TYPE. The
+                available values for TYPE are: 'lexicographical', sort on words, 'numeric',
+                sort on number of occurrences, first key, and words, second key, and 'none',
+                don't try to sort, take it as it comes. Default is 'none'.
+
+  -R, --reverse    Sort in descending order on the single or first key instead of ascending
+                order. This option has no effect if the -S option is enable.
